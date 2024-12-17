@@ -5,7 +5,7 @@ The implementation of AAAI 2025 paper [Text Proxy: Decomposing Retrieval from a 
 
 1. Download pretrained models.
 
-   You could learn CLIP-ViP (our baseline) and download CLIP-ViP pre-trained weights [here](https://github.com/microsoft/XPretrain/tree/main/CLIP-ViP), and we provide links to download:
+   You could learn about CLIP-ViP (our baseline) and download CLIP-ViP pre-trained weights [here](https://github.com/microsoft/XPretrain/tree/main/CLIP-ViP), and we provide links to download:
 
    CLIP-ViP-B/32: [Azure Blob Link](https://hdvila.blob.core.windows.net/dataset/pretrain_clipvip_base_32.pt?sp=r&st=2023-03-16T05:02:41Z&se=2027-05-31T13:02:41Z&spr=https&sv=2021-12-02&sr=b&sig=91OEG2MuszQmr16N%2Bt%2FLnvlwY3sc9CNhbyxYT9rupw0%3D)
 

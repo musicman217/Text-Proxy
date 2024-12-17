@@ -36,4 +36,7 @@ The implementation of AAAI 2025 paper [Text Proxy: Decomposing Retrieval from a 
    bash run_{DATASET}.sh
    ```
 
+# Acknowledgments
+Our code is based on [CLIP-ViP](https://github.com/microsoft/XPretrain/tree/main/CLIP-ViP). We sincerely appreciate for their contributions. 
+
    

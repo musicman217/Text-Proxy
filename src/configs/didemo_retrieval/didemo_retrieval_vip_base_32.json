@@ -1,0 +1,87 @@
+{
+  "train_datasets": 
+    {
+      "name": "didemo-train",
+      "vis_format": "video",
+      "txt": "data/didemo_data/train.jsonl",
+      "vis": "data/didemo_data/24fps_videos"
+    },
+  "val_datasets": [
+
+    {
+      "name": "didemo-val",
+      "vis_format": "video",
+      "txt": "data/didemo_data/val.jsonl",
+      "vis": "data/didemo_data/24fps_videos"
+    }
+  ],
+  "inference_datasets": [
+    {
+      "name": "didemo-test",
+      "vis_format": "video",
+      "txt": "data/didemo_data/test.jsonl",
+      "vis": "data/didemo_data/24fps_videos"
+    }
+  ],
+
+  "train_n_clips": 1,
+  "train_num_frms": 12,
+  "test_n_clips": 1,
+  "test_num_frms": 12,
+  "sample_rate": 0,
+  "sample_jitter": 1,
+  "video_res": [240, 320],
+  "input_res": [224, 224],
+  "max_txt_len": 50,
+
+  "e2e_weights_path": "ckpts/pretrained/pretrain_clipvip_base_32.pt",
+  "clip_weights": "/home/xiaojian/proj/CLIP-ViP/clip_model_32/",
+  "clip_config": "/home/xiaojian/proj/CLIP-ViP/clip_model_32/",
+  "clip_vision_additional_config": {
+      "type": "ViP",
+      "temporal_size": 12,
+      "if_use_temporal_embed": 1,
+      "logit_scale_init_value": 4.60,
+      "add_cls_num": 3
+  },
+
+  "train_batch_size": 64,
+  "test_batch_size": 64,
+  "max_n_example_per_group": 1,
+  "gradient_accumulation_steps": 1,
+  "n_workers": 8,
+  "pin_mem": 1,
+  "fp16": 1,
+  "amp_level": "O2",
+  "seed": 42,
+
+  "optim": "adamw",
+  "betas": [0.9, 0.98],
+  "learning_rate": 2e-6,
+  "tp_learning_rate": 4e-6,
+  "using_M": 1,
+  "dash_option": "linear",
+  "weight_decay": 0.2,
+  "lr_mul": 1,
+  "lr_mul_prefix": "",
+  "loss_config": {
+    "loss_name": "NCELearnableTempLoss",
+    "if_gather": 1,
+    "L_p_alpha": 1,
+    "L_pos_beta": 0.25
+  },
+  "warmup_ratio": 0.01,
+  "decay": "cosine",
+  "grad_norm": 1.0,
+
+  "num_train_epochs": 20,
+  "min_valid_steps": 1,
+  "num_valid": 1,
+  "only_valid_steps": 100,
+  "save_steps_ratio": 0.9,
+  "output_dir": "vidclip_data/output/didemo_retrieval/didemo_retrieval_vip_base_32",
+  "if_tb_log": 0,
+  "if_model_saver": 1,
+  "if_log2file": 1,
+  "dummy_data": 0
+}

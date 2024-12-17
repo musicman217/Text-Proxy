@@ -1,0 +1,13 @@
+future
+typing
+packaging
+pyspark==2.4.7
+lpips
+ujson
+einops
+transformers==4.30.0
+easydict
+tensorboardX==2.0
+av==8.0.2
+lz4==2.1.9
+lmdb==0.97

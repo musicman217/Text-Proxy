@@ -383,12 +383,12 @@ def start_training():
             proxy_logits, pos_logits, contrast_logits = None, None, None
             if cfg.loss_config.loss_name in ["NCELearnableTempLoss", "NCELearnableTempDSLLoss"]:
                 if hasattr(model, 'module'):
-                    proxy_logits, pos_logits, contrast_logits = model.module.sim_proxy(text_proxy, vis_feat, text_feat)
+                    proxy_logits, pos_logits = model.module.sim_proxy(text_proxy, vis_feat, text_feat)
                     logit_scale = model.module.clipmodel.logit_scale
                 else:
-                    proxy_logits, pos_logits, contrast_logits = model.sim_proxy(text_proxy, vis_feat, text_feat)
+                    proxy_logits, pos_logits = model.sim_proxy(text_proxy, vis_feat, text_feat)
                     logit_scale = model.clipmodel.logit_scale
-                loss = loss_func(vis_feat, text_feat, logit_scale, proxy_logits=proxy_logits, pos_logits=pos_logits, contrast_logits=contrast_logits)
+                loss = loss_func(vis_feat, text_feat, logit_scale, proxy_logits=proxy_logits, pos_logits=pos_logits)
             else:
                 loss = loss_func(vis_feat, text_feat)
         else:

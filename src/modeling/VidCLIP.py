@@ -144,6 +144,12 @@ class VidCLIP(nn.Module):
 
 
         if is_train:
+            # hard negative
+            pos_indices = torch.arange(text_proxy.size(0)) 
+            pos_proxy = text_proxy[pos_indices, pos_indices]  # ->(a,512)
+            pos_logits = torch.matmul(pos_proxy.unsqueeze(1), vid_embeds.transpose(0,1)).squeeze()
+            # (a,1,dim)x(dim,b)->(a,1,b)->(a,b)
+
             return proxy_logits, pos_logits
 
         return proxy_logits

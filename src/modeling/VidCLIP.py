@@ -144,23 +144,6 @@ class VidCLIP(nn.Module):
 
 
         if is_train:
-            # hard negative
-            # 对第i个text的第i个proxy与所有video进行相似度计算
-            pos_indices = torch.arange(text_proxy.size(0))  # [0,1,...,a-1] for training as they have same batch size
-            pos_proxy = text_proxy[pos_indices, pos_indices]  # ->(a,512)表示第i个text的第i个proxy
-            ## 和所有video进行相似度计算
-            pos_logits = torch.matmul(pos_proxy.unsqueeze(1), vid_embeds.transpose(0,1)).squeeze()
-            # (a,1,dim)x(dim,b)->(a,1,b)->(a,b)
-
-            # proxy regularization
-            # 先使得正样本proxy距离video的距离比text距离video的距离更远
-            proxy_dist = torch.sqrt(torch.sum((text_proxy - vid_embeds)**2, dim=-1)) # (a,b,dim)-(b,dim)->(a,b)
-            text_dist = torch.sqrt(torch.sum((text_embeds - vid_embeds)**2, dim=-1)).unsqueeze(1) # (a,dim)-(b,dim)->(a=b,1)
-            contrast_logits = proxy_dist / text_dist
-
-
-
-
-            return proxy_logits, pos_logits, contrast_logits
+            return proxy_logits, pos_logits
 
         return proxy_logits

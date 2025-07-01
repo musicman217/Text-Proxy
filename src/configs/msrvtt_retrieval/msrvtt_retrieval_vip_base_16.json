@@ -1,5 +1,5 @@
 {
-  "train_datasets": 
+  "train_datasets":
     {
       "name": "msrvtt-9k",
       "vis_format": "video",
@@ -34,9 +34,9 @@
   "input_res": [224, 224],
   "max_txt_len": 50,
 
-  "e2e_weights_path": "ckpts/pretrained/pretrain_clipvip_base_32.pt",
-  "clip_weights": "/home/xiaojian/clipvip/clip_model_32",
-  "clip_config": "/home/xiaojian/clipvip/clip_model_32",
+  "e2e_weights_path": "ckpts/pretrained/pretrain_clipvip_base_16.pt",
+  "clip_weights": "/home/xiaojian/clipvip/clip_model_16",
+  "clip_config": "/home/xiaojian/clipvip/clip_model_16",
   "clip_vision_additional_config": {
       "type": "ViP",
       "temporal_size": 12,
@@ -45,8 +45,8 @@
       "add_cls_num": 3
   },
 
-  "train_batch_size": 64,
-  "test_batch_size": 64,
+  "train_batch_size": 56,
+  "test_batch_size": 56,
   "max_n_example_per_group": 1,
   "gradient_accumulation_steps": 1,
   "n_workers": 8,
@@ -60,8 +60,8 @@
   "learning_rate": 1e-6,
   "tp_learning_rate": 2e-6,
   "using_M": 4,
-  "delta": 1,
-  "eta": 1,
+  "delta": -1,
+  "eta": -1,
   "dash_option": "theta",
   "weight_decay": 0.2,
   "lr_mul": 1,
@@ -81,7 +81,7 @@
   "num_valid": 1,
   "only_valid_steps": 100,
   "save_steps_ratio": 0.9,
-  "output_dir": "vidclip_data/output/msrvtt_retrieval/msrvtt_retrieval_vip_base_32",
+  "output_dir": "vidclip_data/output/msrvtt_retrieval/msrvtt_retrieval_vip_base_16",
   "if_tb_log": 0,
   "if_model_saver": 1,
   "if_log2file": 1,

@@ -170,7 +170,7 @@ class TextProxy(nn.Module):
 
         text_feat_ = text_feat / text_feat.norm(dim=-1, keepdim=True)
         frame_feat_ = frame_feat / frame_feat.norm(dim=-1, keepdim=True)
-        dir_vec = text_feat.unsqueeze(1) - pro_proxies
+        dir_vec = self.cfg.delta * text_feat.unsqueeze(1) - self.cfg.eta * pro_proxies
         dir_vec = dir_vec / torch.norm(dir_vec, p=2, dim=2, keepdim=True) # (a,b,1)
         frame_logits = torch.matmul(text_feat_, frame_feat_.transpose(1, 2)).permute(1, 0, 2)
         # (a,512)x(b,512,f)->(b,a,f)->(a,b,f)

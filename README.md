@@ -29,8 +29,16 @@ The implementation of AAAI 2025 paper [Text Proxy: Decomposing Retrieval from a 
    pip install -r requirements.txt
    pip install torch==1.13.0+cu117 torchvision==0.14.0+cu117 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu117
    ```
+   
+5. Install `nvidia apex` to support mixed-presicion training.
 
-5. Fine-tuning for text-video retrieval.
+   ```
+   git clone https://github.com/NVIDIA/apex
+   cd apex
+   pip install -v --no-cache-dir --no-build-isolation --global-option="--cpp_ext" --global-option="--cuda_ext" --global-option="--deprecated_fused_adam" --global-option="--xentropy" --global-option="--fast_multihead_attn" ./
+   ```
+
+6. Fine-tuning for text-video retrieval.
 
    ```
    bash run_{DATASET}.sh
